@@ -1,18 +1,49 @@
-import React from 'react';
+import {useEffect, useState} from 'react'
+import axios from 'axios';
+
 
 import Header from '../Header/Header.jsx'
 import './App.css';
 
 
 function App() {
-    return (
+
+    const [item, setItem] = useState([])
+
+    useEffect(() => {
+        fetchItem();
+    }, [])
+
+    const fetchItem = () => {
+        axios({
+            method: 'GET',
+            url: '/api/groceries'
+        })
+        .then((response) => {
+            console.log('this is our grocery data', response.data)
+            setItem(response.data)
+
+        })
+        .catch((error) => {
+            console.log('error in GET /api/groceries client side', error)
+        })
+    }
+
+
+return (
         <div className="App">
             <Header />
             <main>
-                <p>Under Construction...</p>
+                <h1>Shopping List</h1>
+                    {item.map((each) => {
+                        return(<article>{each.item}</article>)
+                    })}
+                    
             </main>
         </div>
     );
 }
 
+
+//jsx / html article element 
 export default App;
