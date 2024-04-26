@@ -26,7 +26,43 @@ router.get('/', (req,res) => {
 
 //DELETE
 
-//PUT 
+//BUY ITEM - CHANGE TO PURCHASED PUT ROUTE  
+
+router.put('/:id', (req, res) => {
+    const sqlText = `
+        UPDATE "groceries"
+        SET "isPurchased" = TRUE
+        WHERE "id" = $1;
+    `
+    const sqlValues = [req.params.id]
+
+    pool.query(sqlText, sqlValues)
+        .then((dbRes) => {
+            res.sendStatus(200)
+        })
+        .catch((dbErr) => {
+            console.log('PUT /groceries/:id error:', dbErr);
+            res.sendStatus(500)
+        })
+})
+
+//REMOVE ITEM FROM SHOPPING LIST 
+
+router.delete('/:id', (req, res) => {
+    const sqlText = `
+        DELETE FROM "groceries"
+        WHERE "id" = $1; 
+    `
+    const sqlValues = [req.params.id]
+
+    pool.query(sqlText, sqlValues)
+        .then((dbRes) => {
+            res.sendStatus(200)
+        })
+        .catch((dbErr) => {
+            res.sendStatus(500)
+        })
+})
 
 
 module.exports = router

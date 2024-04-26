@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Header from '../Header/Header.jsx'
 import './App.css';
+import Item from '../Item/Item.jsx';
 
 
 function App() {
@@ -35,15 +36,7 @@ return (
             <Header />
             <main>
                 <h1>Shopping List</h1>
-                    {item.map((each) => {
-                        return(<span>
-                                        <p>{each.item}</p>
-                                        <p>{each.quantity} {each.unit}</p>
-                                        <button>buy</button>
-                                        <button>remove</button>
-                                </span>)
-                    })}
-                    
+                    <Item item = {item} fetchItem = {fetchItem}/>
             </main>
         </div>
     );
