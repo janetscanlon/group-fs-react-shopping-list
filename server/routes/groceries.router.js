@@ -24,7 +24,22 @@ router.get('/', (req,res) => {
 
 
 
-//DELETE
+//SHOPPING LIST DELETE ROUTE
+router.delete('/', (req,res) => {
+    const sqlText = `
+                        DELETE FROM groceries;`
+
+    pool.query(sqlText)
+    .then((dbRes) => {
+        res.sendStatus(200)
+    })
+    .catch((dbErr) => {
+        
+    })
+})
+
+
+//SHOPPING LIST PUT ROUTE 
 
 //PUT 
 
