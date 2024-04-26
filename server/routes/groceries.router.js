@@ -20,6 +20,23 @@ router.get('/', (req,res) => {
 })
 
 //POST /api/groceries 
+router.post('/',(req,res) => {
+    const country = req.body;
+    const sqlText = `
+        INSERT INTO groceries 
+            (name, quantity, unit) 
+            VALUES ($1, $2, $3) `;
+
+            pool.query(sqlText, [item.name, item.quantity, item.unit])
+        .then((result) => {
+            console.log(`Added item to the database:`, item);
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}:`, error);
+            res.sendStatus(500); 
+        })
+})
 
 
 

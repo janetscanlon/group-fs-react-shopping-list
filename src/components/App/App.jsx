@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
 import axios from 'axios';
+import AddItem from './Add Item/AddItem.jsx';
 
 
 import Header from '../Header/Header.jsx'
@@ -33,6 +34,7 @@ function App() {
 return (
         <div className="App">
             <Header />
+            <addItem />
             <main>
                 <h1>Shopping List</h1>
                     {item.map((each) => {
