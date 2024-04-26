@@ -34,12 +34,29 @@ router.delete('/', (req,res) => {
         res.sendStatus(200)
     })
     .catch((dbErr) => {
-        
+        console.log('error in ShoppingList Clear:', dbErr)
+        res.sendStatus(500)
     })
 })
 
 
 //SHOPPING LIST PUT ROUTE 
+router.put('/', (req,res) => {
+    const sqlText = `UPDATE groceries
+                        SET "isPurchased"=FALSE 
+                        WHERE "isPurchased"=TRUE;`
+                        
+    pool.query(sqlText)
+    .then((dbRes) =>{
+        res.sendStatus(200)
+    })
+    .catch((dbError) => {
+        console.log('Error in ShoppingList', dbError)
+        res.sendStatus(500)
+    })
+})
+
+
 
 //PUT 
 
