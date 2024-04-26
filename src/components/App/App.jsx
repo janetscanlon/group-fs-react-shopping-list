@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Header from '../Header/Header.jsx'
 import './App.css';
+import Item from '../Item/Item.jsx';
 
 
 function App() {

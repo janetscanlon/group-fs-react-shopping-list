@@ -34,8 +34,8 @@ function itemComponent({item, fetchItem}){
 
     return (
         <span>
-                <p>{each.item}</p>
-                <p>{each.quantity} {each.unit}</p>
+                <p>{item.item}</p>
+                <p>{item.quantity} {item.unit}</p>
                 { item.isPurchased ?
                     <>
                         <button onClick={buyItem}>buy</button>
