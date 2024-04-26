@@ -36,7 +36,12 @@ return (
             <main>
                 <h1>Shopping List</h1>
                     {item.map((each) => {
-                        return(<article>{each.item}</article>)
+                        return(<span>
+                                        <p>{each.item}</p>
+                                        <p>{each.quantity} {each.unit}</p>
+                                        <button>buy</button>
+                                        <button>remove</button>
+                                </span>)
                     })}
                     
             </main>
